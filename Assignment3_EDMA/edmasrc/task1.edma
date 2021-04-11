@@ -1,0 +1,19 @@
+//Name
+ValueDomain Name : String[1..MAX]
+
+//JSON
+ValueDomain JsonString : String[0..MAX]
+ValueDomain JsonNumber : Double[MIN..MAX]
+ValueDomain JsonBoolean : Boolean
+ValueDomain JsonNull : Integer[0..0]
+
+ValueDomain JsonObject : OneOf<JsonObjectList,Array,JsonString,JsonNumber,JsonBoolean,JsonNull>
+
+ValueDomain JsonObjectList : List<Member>
+
+ValueDomain Member : Struct {
+    name : Name,
+    value : JsonObject
+}
+
+ValueDomain Array : List<JsonObjectList>
